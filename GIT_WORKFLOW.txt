@@ -1,0 +1,166 @@
+EVERYDAY UTILITY DESK — GIT AND PULL REQUEST WORKFLOW
+=====================================================
+
+Repository:
+https://github.com/Aniket886/Everyday-Utility-Desk.git
+
+IMPORTANT CURRENT STATE
+-----------------------
+The public GitHub repository was empty when this guide was prepared, and the local project
+folder was not yet a Git repository. A pull request cannot be opened until the remote has a
+default branch such as main. Do not place real secrets, .env files, cookies, downloaded media,
+or private research data in any commit.
+
+PHASE 1 — ESTABLISH THE INITIAL MAIN BRANCH
+-------------------------------------------
+Perform this once, after the repository owner reviews the full project contents.
+
+1. Open a terminal in the project root.
+
+2. Initialize Git and name the default branch:
+
+   git init
+   git branch -M main
+
+3. Add the GitHub remote:
+
+   git remote add origin https://github.com/Aniket886/Everyday-Utility-Desk.git
+
+4. Verify ignored and staged files before committing:
+
+   git status --short
+   git check-ignore -v .env
+   git add .
+   git status --short
+   git diff --cached --check
+
+   Confirm that node_modules, dist, .env, cookies, keys, test artifacts, and private data
+   are not staged. If a sensitive file appears, stop and remove it from the index.
+
+5. Run project verification:
+
+   npm install
+   npx tsc --noEmit
+   npm run build
+
+6. Create the initial commit:
+
+   git commit -m "feat: initialize Everyday Utility Desk application"
+
+7. Push the baseline:
+
+   git push -u origin main
+
+8. In GitHub, confirm that main is the default branch and enable branch protection where
+   appropriate. Require pull-request review and passing checks before future merges.
+
+PHASE 2 — CREATE A DOCUMENTATION BRANCH
+---------------------------------------
+After main exists and is synchronized:
+
+1. Update main:
+
+   git switch main
+   git pull --ff-only origin main
+
+2. Create a focused branch:
+
+   git switch -c docs/comprehensive-project-guide
+
+3. Make or copy the documentation changes.
+
+4. Review the exact diff:
+
+   git status --short
+   git diff -- README.md .gitignore .env.example INSTRUCTIONS.txt GIT_WORKFLOW.txt
+
+5. Confirm security exclusions:
+
+   git check-ignore -v .env
+   git check-ignore -v node_modules
+   git check-ignore -v output
+
+6. Stage only intended files:
+
+   git add README.md .gitignore .env.example INSTRUCTIONS.txt GIT_WORKFLOW.txt
+
+7. Validate staged content:
+
+   git diff --cached --check
+   git diff --cached
+
+8. Commit with a Conventional Commit message:
+
+   git commit -m "docs: add comprehensive project and setup guides"
+
+9. Push the branch:
+
+   git push -u origin docs/comprehensive-project-guide
+
+PHASE 3 — OPEN THE PULL REQUEST
+-------------------------------
+Recommended PR title:
+
+docs: add comprehensive project and setup guides
+
+Recommended PR description:
+
+Summary
+- Replaces the basic README with complete project, feature, setup, usage, privacy,
+  contribution, license, and contact documentation.
+- Expands .gitignore to protect environment files, credentials, keys, cookies, local data,
+  build output, and test artifacts.
+- Adds a safe environment-variable template.
+- Adds complete user instructions and troubleshooting guidance.
+- Documents the Git branch, commit, push, and review workflow.
+
+Validation
+- [ ] npm install completed
+- [ ] npx tsc --noEmit passed
+- [ ] npm run build passed
+- [ ] .env is ignored
+- [ ] No secrets or private data are staged
+- [ ] Links and one-click Windows instructions were reviewed
+
+Risk
+- Documentation and ignore-rule changes only.
+- Review .gitignore carefully to ensure no required project asset is excluded.
+
+Open the PR through GitHub after pushing, or use GitHub CLI:
+
+   gh pr create --base main --head docs/comprehensive-project-guide ^
+     --title "docs: add comprehensive project and setup guides" ^
+     --body-file [PLACEHOLDER_PR_DESCRIPTION_FILE]
+
+REVIEW AND MERGE
+----------------
+1. Request at least one reviewer.
+2. Address feedback with focused commits, for example:
+
+   git commit -m "docs: clarify Windows setup troubleshooting"
+
+3. Push follow-up commits:
+
+   git push
+
+4. Merge only after review and required checks pass.
+5. Prefer squash merge when the branch contains small corrective commits.
+6. Delete the merged branch locally and remotely:
+
+   git switch main
+   git pull --ff-only origin main
+   git branch -d docs/comprehensive-project-guide
+   git push origin --delete docs/comprehensive-project-guide
+
+COMMIT MESSAGE STYLE
+--------------------
+Use: type(scope optional): concise imperative description
+
+Examples:
+feat: add documentation workspaces
+fix(sql): initialize the sample dataset before queries
+docs: add comprehensive setup and troubleshooting guide
+chore(deps): update compatible dependencies
+test: add Student Section smoke coverage
+
+Avoid vague messages such as "updates", "changes", "fix stuff", or "final".

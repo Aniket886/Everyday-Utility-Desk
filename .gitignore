@@ -1,0 +1,96 @@
+# Dependencies
+node_modules/
+
+# Production and tool output
+dist/
+build/
+coverage/
+output/
+downloads/
+.playwright-cli/
+
+# Environment variables and local configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Secrets, credentials, certificates, and signing material
+*.key
+*.pem
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+*.cer
+*.der
+*.mobileprovision
+credentials.json
+service-account*.json
+cookies.txt
+*.cookies
+auth.json
+secrets.*
+
+# Logs and runtime files
+*.log
+logs/
+*.pid
+*.pid.lock
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Package-manager and build caches
+.npm/
+.yarn/cache/
+.yarn/unplugged/
+.pnpm-store/
+.vite/
+.cache/
+.parcel-cache/
+*.tsbuildinfo
+
+# Test artifacts
+test-results/
+playwright-report/
+blob-report/
+
+# Editors and IDEs
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.example.json
+.idea/
+*.iml
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Operating-system files
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Temporary and backup files
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.backup
+*.orig
+*~
+
+# Local documents and databases that may contain private research data
+*.sqlite
+*.sqlite3
+*.db
+private-data/
+local-data/

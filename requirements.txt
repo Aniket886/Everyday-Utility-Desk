@@ -1,0 +1,14 @@
+# Everyday Utility Desk system requirements
+#
+# This is a Node.js/npm application; it has no Python package dependencies.
+# The authoritative JavaScript dependency manifests are package.json and package-lock.json.
+#
+# Required:
+#   Node.js >= 20 (includes npm)
+#   A modern Chromium, Firefox, or Edge browser
+#
+# Recommended for media merging and MP3 export:
+#   FFmpeg available on PATH
+#
+# Windows students: double-click START_EVERYDAY_UTILITY_DESK.bat.
+# It installs npm dependencies, checks compatible updates, and starts the website.

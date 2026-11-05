@@ -1,0 +1,487 @@
+EVERYDAY UTILITY DESK — USER AND TROUBLESHOOTING GUIDE
+======================================================
+
+Repository:
+https://github.com/Aniket886/Everyday-Utility-Desk.git
+
+CONTENTS
+--------
+1. System requirements
+2. Quick setup
+3. Starting and stopping the website
+4. Everyday tools
+5. Bachelor tools
+6. Master tools
+7. PhD tools
+8. Documentation tools
+9. Programs and courses
+10. External resources
+11. Privacy and responsible use
+12. Troubleshooting FAQ
+13. Developer checks
+
+
+1. SYSTEM REQUIREMENTS
+----------------------
+Required:
+- Windows, macOS, or Linux
+- Node.js 20 or later
+- npm (included with Node.js)
+- A modern browser such as Chrome, Edge, or Firefox
+- Internet access for the first npm installation
+
+Recommended:
+- FFmpeg on PATH for combining media streams and exporting MP3 audio
+- At least 8 GB RAM for large PDFs, OCR, diagrams, and datasets
+- A camera for live QR scanning
+
+No Python packages are required. requirements.txt documents system requirements only.
+No AI API key is required. GROQ_API_KEY and similar keys are not used by the current app.
+
+
+2. QUICK SETUP
+--------------
+WINDOWS — EASIEST METHOD
+
+1. Extract or clone the project folder.
+2. Double-click START_EVERYDAY_UTILITY_DESK.bat.
+3. If Windows asks for network access, allow access only on trusted networks.
+4. Wait for the terminal to show the local address.
+5. Open http://localhost:5173.
+
+To update dependencies without starting the website, double-click
+UPDATE_DEPENDENCIES.bat.
+
+COMMAND LINE — ALL PLATFORMS
+
+1. Open a terminal in the repository root.
+2. Install dependencies:
+
+   npm install
+
+3. Start development mode:
+
+   npm run dev
+
+4. Open http://localhost:5173.
+
+PRODUCTION MODE
+
+1. Build:
+
+   npm run build
+
+2. Start the local production server:
+
+   npm start
+
+3. Open http://localhost:4174.
+
+To change the production port in PowerShell:
+
+   $env:PORT=5000
+   npm start
+
+The .env.example file is a reference template. The current server reads process environment
+variables but does not automatically load a .env file.
+
+
+3. STARTING AND STOPPING THE WEBSITE
+------------------------------------
+- Start: npm run dev
+- Stop: focus the terminal and press Ctrl+C.
+- Restart after package changes: stop the terminal, run npm install, then npm run dev.
+- If Vite reports that port 5173 is busy, it will normally use 5174. Stop the older server
+  if you want to return to 5173.
+
+The predev script checks for compatible updates no more than once every 24 hours. If the
+network is unavailable and dependencies already exist, the installed versions are used.
+
+
+4. EVERYDAY TOOLS
+-----------------
+CREATE QR
+1. Enter a URL or text.
+2. Choose foreground, background, and output size.
+3. Review the live preview.
+4. Select Download PNG.
+
+SCAN QR
+1. Select Open camera and grant browser permission, or select Scan an image.
+2. Position the code clearly inside the camera view or choose a sharp image.
+3. Copy the decoded result.
+
+CONVERT FILES
+Supported workflows include image to PDF, PDF pages to PNG ZIP, DOCX to HTML or text,
+and TXT to PDF.
+1. Drop or choose a supported file.
+2. Choose an output when multiple formats are available.
+3. Select Convert & download.
+4. Keep the browser tab open until processing finishes.
+
+MEDIA DOWNLOAD
+Use only for media you created, own, or are licensed to download.
+1. Paste a supported YouTube URL.
+2. Select Check video.
+3. Choose the permitted output quality.
+4. Confirm that you have permission.
+5. Select Download.
+Platform terms, copyright rules, regional law, private-video restrictions, and sign-in
+requirements still apply.
+
+
+5. BACHELOR TOOLS
+-----------------
+SOURCE FORMAT COMPOSER
+Input: Author | Year | Title | Publisher or Journal
+Action: Compose reference
+Result: A structured academic reference that can be copied or exported.
+
+DELIMITED TABLE READER
+Input: CSV or TSV text with a header row
+Action: Inspect table
+Result: Row count, column count, headers, and a table preview.
+
+NUMERIC SUMMARY BENCH
+Input: Comma-, space-, or line-separated numbers
+Action: Calculate summary
+Result: Count, sum, mean, median, range, and population standard deviation.
+
+BROWSER CODE PRACTICE
+Input: HTML with optional CSS and JavaScript
+Action: Run preview
+Result: A sandboxed browser preview. Do not paste untrusted code.
+
+EXPRESSION PATTERN LAB
+Input: Regular expression on the first line; sample text below it
+Action: Find matches
+Result: Matched text and starting positions.
+
+OBJECT STRUCTURE EXAMINER
+Input: JSON
+Action: Validate & format
+Result: Indented JSON or an actionable parsing error.
+
+FOCUS INTERVAL CLOCK
+1. Set the number of minutes.
+2. Select Start focus.
+3. Pause or reset when needed.
+The timer records completion only in the current application session.
+
+CROSSUNIT CALCULATION SHEET
+Input: value | from unit | to unit
+Examples: 10 | km | mi, 25 | c | f
+Supported length units: m, km, cm, mm, mi, ft, in. Temperature supports c and f.
+
+DRAFT CHANGE READER
+Input: First draft, a line containing only ---, then the second draft
+Action: Compare drafts
+Result: Line-level additions and removals.
+
+MARKUP EQUATION NOTEBOOK
+Input: Markdown text
+Action: Render notebook
+Result: Sanitized formatted preview. Export preserves generated output as text.
+
+
+6. MASTER TOOLS
+---------------
+REFERENCE KEY CURATOR
+Input: BibTeX-style records
+Action: Review records
+Result: Detected record count, citation keys, and duplicate keys.
+
+CROSSSTUDY EVIDENCE MATRIX
+Input: Study | Method | Finding | Limitation, one study per line
+Action: Build matrix
+Result: A Markdown evidence-comparison table.
+
+TABULAR CLEANUP WORKSHOP
+Input: CSV rows
+Action: Clean table
+Result: Trimmed cells and duplicate-row removal. Review output before replacing source data.
+
+METHOD CHOICE NAVIGATOR
+Input: Plain-language variable types, group structure, and research question
+Action: Suggest method
+Result: A transparent starting method and assumptions. This is educational guidance, not
+statistical or professional advice.
+
+RESEARCH FIGURE WORKSHOP
+Input: Category | Value, one item per line
+Action: Build figure
+Result: A text-based accessible bar figure suitable for quick comparison.
+
+LOCAL QUERY DATABASE LAB
+Input: SQL using the sample table named students
+Action: Run query
+Result: JSON rows. The sample columns are name, course, and score.
+
+SCHOLARLY CLARITY REVIEW
+Input: Academic prose
+Action: Review clarity
+Result: Counts, sentence length, possible passive constructions, and estimated reading time.
+Results use deterministic heuristics and require human review.
+
+CITATION ANCHORED NOTES
+Input: Source key, page, and note text
+Action: Save note
+Result: A local note stored in browser storage and shown in output.
+
+DEGREE MILESTONE SCHEDULER
+Input: YYYY-MM-DD | milestone, one item per line
+Action: Build schedule
+Result: A date-sorted numbered schedule.
+
+READING COURSE LEDGER
+Input: Status | Author | Title
+Action: Update ledger
+Result: Reading items grouped by status.
+
+
+7. PHD TOOLS
+------------
+DOCUMENT MARGIN EXTRACTOR
+1. Choose an annotated PDF.
+2. Select Extract annotations.
+3. Review and export detected annotations.
+Some PDF annotation types cannot be extracted. A valid PDF without annotations returns a
+clear no-annotations result.
+
+SCANNED CORPUS TRANSCRIBER
+1. Choose a PNG, JPG, or WebP image with printed text.
+2. Select Transcribe image.
+3. Wait for the local OCR engine.
+4. Correct recognition errors against the source image before using quotations.
+The first OCR run may need to obtain language assets.
+
+SURVEY PATTERN REVIEW
+Input: CSV with a header row and survey responses
+Action: Review responses
+Result: Frequency and percentage summaries for every column.
+
+ENDPOINT EXCHANGE DESK
+Input: JSON containing url, method, optional headers, and optional body
+Action: Send request
+Result: HTTP status, timing, content type, and response body.
+This tool intentionally contacts the entered server. Never expose credentials or target a
+system without authorization. Browser CORS rules still apply.
+
+RECALL SCHEDULE DECKS
+Input: Question | Answer, one card per line
+Action: Prepare deck
+Result: Local review cards with example review dates. The current schedule is a simple
+educational sequence, not a full adaptive-learning algorithm.
+
+KNOWLEDGE RELATION MAPPER
+Input: Concept A -> Concept B
+Action: Map relations
+Result: Unique concepts and directed relationships.
+
+SYMBOLIC MATRIX WORKBENCH
+Input: A Math.js expression, for example det([[1,2],[3,4]])
+Action: Evaluate expression
+Result: The locally evaluated mathematical value. Validate critical calculations separately.
+
+RESEARCH PROCESS DIAGRAMMER
+Input: Mermaid diagram source
+Action: Render diagram
+Result: A sanitized SVG diagram. Invalid syntax returns an explanatory error.
+
+DISSERTATION TASK LEDGER
+Input: Status | Task
+Action: Summarize ledger
+Result: Tasks grouped by workflow status.
+
+CODE LAYOUT REFINER
+Input: JavaScript source
+Action: Format source
+Result: Prettier-formatted JavaScript. Keep source control or a backup before replacing code.
+
+
+8. DOCUMENTATION TOOLS
+----------------------
+DOCUMENT OUTLINE PLANNER
+Input: Section | Purpose
+Action: Build outline
+Result: A numbered Markdown document structure.
+
+PROJECT README BLUEPRINT
+Input: Project | Purpose | Setup command
+Action: Build README
+Result: A Markdown README skeleton with setup, usage, privacy, and license sections.
+
+PROCEDURE STRUCTURE BUILDER
+Input: One procedure step per line
+Action: Build procedure
+Result: A numbered operating procedure and completion checklist.
+
+MEETING RECORD FORMATTER
+Input: Topic | Decision | Owner | Due date
+Action: Format minutes
+Result: Dated meeting minutes with a structured action table.
+
+CHANGE RECORD CURATOR
+Input: Added/Changed/Fixed/Removed | Description
+Action: Build change record
+Result: A categorized Markdown change record.
+
+REQUIREMENTS BRIEF BUILDER
+Input: Need | Reason | Acceptance condition
+Action: Build brief
+Result: Numbered requirements with rationale and acceptance statements.
+
+
+9. PROGRAMS AND COURSES
+-----------------------
+Open Student section > Programs & courses, then select a program group. The directory filters
+the same tested local tools; it does not create duplicate copies. Each program also shows
+official external resources for work that is too large for this browser application.
+
+Available groups:
+- Computer Science & IT
+- Data Science & Statistics
+- Engineering & Technology
+- Business & Management
+- Health & Life Sciences
+- Humanities & Social Sciences
+- Research, Thesis & Dissertation
+
+If a course is not named explicitly, use the Student Section search field with task terms such
+as "citation", "survey", "SQL", "diagram", "documentation", or "statistics".
+
+
+10. EXTERNAL RESOURCES
+----------------------
+Open Student section > External resources. Links open in a new tab.
+
+- Bing Image Creator: AI image generation; guest/account limits and provider policies apply.
+- Zotero: full reference and PDF library management.
+- Overleaf: online collaborative LaTeX editor; free and paid plan limits apply.
+- JupyterLab: local Python notebook installation.
+- RStudio Desktop: full R analysis environment.
+- QGIS: desktop geographic information system.
+- FreeCAD: engineering and parametric 3D CAD.
+- Blender: 3D modelling, rendering, animation, and visualization.
+- diagrams.net: full visual diagram editor.
+- Krita: digital painting and academic illustration.
+
+External services are not operated by Everyday Utility Desk. Review privacy, data retention,
+account, age, institutional, academic-integrity, and license rules before uploading work.
+
+
+11. PRIVACY AND RESPONSIBLE USE
+-------------------------------
+- Do not commit .env, API keys, passwords, cookies, certificates, or private keys.
+- Do not put private research data in output/, screenshots, logs, or Git history.
+- Local browser storage is not encrypted backup storage.
+- Anonymize human-participant data before importing it.
+- Review all generated citations, calculations, OCR, documentation, and diagrams.
+- Use media downloads only when authorized.
+- Do not send HTTP requests to systems without permission.
+- Follow academic-integrity rules for generated images and external AI services.
+
+
+12. TROUBLESHOOTING FAQ
+-----------------------
+Q: "node" or "npm" is not recognized.
+A: Install the current Node.js LTS release from https://nodejs.org/, close the terminal, open
+   a new terminal, and run node --version and npm --version.
+
+Q: npm install is slow or appears idle.
+A: Some packages include large browser, OCR, PDF, or media assets. Wait several minutes. Check
+   the internet connection. If interrupted, run npm install again.
+
+Q: A module cannot be found.
+A: Delete no source files. Run npm install. On Windows, UPDATE_DEPENDENCIES.bat also verifies
+   the build.
+
+Q: The site opened on port 5174 instead of 5173.
+A: Another process is using 5173. Stop older npm terminals with Ctrl+C, or use the displayed
+   5174 address.
+
+Q: The browser shows a blank or outdated page.
+A: Confirm the terminal is running, perform a hard refresh, and clear only the site's cache if
+   necessary. Stop and restart npm run dev after dependency changes.
+
+Q: The camera does not open.
+A: Use localhost, grant browser permission, close other camera apps, and reload. Alternatively,
+   scan a local image.
+
+Q: QR scanning cannot read the image.
+A: Use a sharp, uncropped image with good contrast and enough quiet space around the code.
+
+Q: PDF conversion or extraction fails.
+A: Confirm the file is a valid, unlocked PDF. Encrypted, damaged, extremely large, or unusual
+   annotation formats may not be supported.
+
+Q: OCR is slow or inaccurate.
+A: Use a high-resolution, upright, well-lit image with printed English text. Crop irrelevant
+   content and verify all output manually.
+
+Q: An external tool does not open or requires an account.
+A: External providers control regional access, account requirements, free limits, and outages.
+   Use only the official link and review provider terms.
+
+Q: Endpoint Exchange Desk returns a CORS error.
+A: The target server does not permit browser requests from localhost. Do not bypass security
+   controls. Use an API designed for browser clients or an authorized local development setup.
+
+Q: Media metadata or download fails.
+A: Confirm the URL is supported and public, update dependencies, install FFmpeg, and verify that
+   the media is available in your region. Private or restricted media may require authorization
+   that this project does not collect.
+
+Q: MP3 or merged video is unavailable.
+A: Install FFmpeg, ensure ffmpeg --version works in a new terminal, and restart the app.
+
+Q: The browser runs out of memory.
+A: Close unused tabs, choose a smaller file or dataset, split the source, and retry. Browser
+   tools do not have unlimited desktop memory.
+
+Q: Local drafts disappeared.
+A: Browser data may be deleted by privacy settings, cleanup tools, or incognito mode. Export
+   important results and keep source-controlled or institutionally approved backups.
+
+Q: npm run build reports large chunks.
+A: Vite may warn about lazily loaded scientific libraries. A warning is not a build failure.
+   Treat an actual non-zero exit code or error message as a failure.
+
+Q: Windows warns about the .bat launcher.
+A: Inspect the file in a text editor, confirm it came from the official repository, and run it
+   only if you trust the source. It invokes local npm scripts; it does not require administrator
+   privileges.
+
+
+13. DEVELOPER CHECKS
+--------------------
+Before committing or opening a pull request:
+
+1. Install exact declared dependencies:
+
+   npm install
+
+2. Type-check:
+
+   npx tsc --noEmit
+
+3. Build:
+
+   npm run build
+
+4. Start the app and test changed workflows:
+
+   npm run dev
+
+5. Confirm sensitive files are ignored:
+
+   git check-ignore -v .env
+   git check-ignore -v node_modules
+   git check-ignore -v output
+
+6. Review staged content before commit:
+
+   git diff --cached --check
+   git diff --cached
+
+Follow GIT_WORKFLOW.txt for branch, commit, push, and pull-request instructions.
