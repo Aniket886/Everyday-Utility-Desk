@@ -21,6 +21,12 @@ const tools = [
   { id: 'students' as const, label: 'Student section', short: 'ACADEMIC', icon: GraduationCap, description: 'Explore 36 local tools plus program-based and official external resources.' },
 ];
 
+const toolGroups: Array<{ label: string; ids: ToolId[] }> = [
+  { label: 'Everyday utilities', ids: ['qr-create', 'qr-scan', 'convert'] },
+  { label: 'Media', ids: ['youtube'] },
+  { label: 'Academic', ids: ['students'] },
+];
+
 function downloadBlob(blob: Blob, name: string) {
   const href = URL.createObjectURL(blob);
   const a = document.createElement('a');
@@ -52,12 +58,17 @@ export default function App() {
           <div><strong>Everyday</strong><span>Utility Desk</span></div>
           <button className="icon-button sidebar-close" onClick={() => setMenuOpen(false)} aria-label="Close menu"><X size={20} /></button>
         </div>
-        <p className="eyebrow nav-label">Your tools</p>
+        <p className="eyebrow nav-label">Workspace</p>
         <nav aria-label="Utility tools">
-          {tools.map((tool, index) => {
-            const Icon = tool.icon;
-            return <button key={tool.id} className={`nav-item ${active === tool.id ? 'active' : ''}`} onClick={() => chooseTool(tool.id)}><span className="nav-index">0{index + 1}</span><Icon size={19} strokeWidth={1.8} /><span>{tool.label}</span><ChevronRight className="nav-arrow" size={16} /></button>;
-          })}
+          {toolGroups.map((group) => <div className="nav-group" key={group.label}>
+            <p className="nav-section-label">{group.label}</p>
+            {group.ids.map((id) => {
+              const tool = tools.find((item) => item.id === id)!;
+              const index = tools.findIndex((item) => item.id === id);
+              const Icon = tool.icon;
+              return <button key={tool.id} className={`nav-item ${active === tool.id ? 'active' : ''}`} onClick={() => chooseTool(tool.id)}><span className="nav-index">0{index + 1}</span><Icon size={19} strokeWidth={1.8} /><span>{tool.label}</span><ChevronRight className="nav-arrow" size={16} /></button>;
+            })}
+          </div>)}
         </nav>
         <div className="privacy-note"><ShieldCheck size={18} /><div><strong>Private by default</strong><span>QR and file tools run in your browser.</span></div></div>
       </aside>
